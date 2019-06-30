@@ -1,5 +1,10 @@
+# 參考: https://myst729.github.io/posts/2014/a-star-pathfinding/
+# 參考: https://swf.com.tw/?p=67
+
+
 import matplotlib.pyplot as plt
 import numpy as np
+
 
 class Map:
     def __init__(self):
@@ -23,7 +28,7 @@ class Node:
 
     def get_reachalbe_nbr(self):
         """
-        回傳: 此節點的可到達的鄰居節點 即過濾掉 超出邊界 或 是障礙物 或 在關閉列表 或 因邊點阻擋而不能過 的節點
+        輸出: 此節點的可到達的鄰居節點 即過濾掉 超出邊界 或 是障礙物 或 在關閉列表 或 因邊點阻擋而不能過 的節點
         """
         nbr = []
         x, y = self.pos
@@ -54,14 +59,14 @@ class Node:
     
     def calc_h(self):
         """
-        回傳: 此節點到終點之間的曼哈頓距離
+        輸出: 此節點到終點之間的曼哈頓距離
         """
         self.h = abs(dest.pos[0] - self.pos[0]) + abs(dest.pos[1] - self.pos[1])
 
     def calc_g_of_step(self, node):
         """
         輸入: 任一鄰居節點
-        回傳: 此節點到鄰居節點間的移動代價
+        輸出: 此節點到鄰居節點間的移動代價
         """
         dx = node.pos[0] - self.pos[0]
         dy = node.pos[1] - self.pos[1]
