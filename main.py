@@ -1,7 +1,3 @@
-# 參考: https://myst729.github.io/posts/2014/a-star-pathfinding/
-# 參考: https://swf.com.tw/?p=67
-
-
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -70,7 +66,7 @@ class Node:
         """
         dx = node.pos[0] - self.pos[0]
         dy = node.pos[1] - self.pos[1]
-        in_corner = False if (dx is 0) or (dy is 0) else True
+        in_corner = False if (dx == 0) or (dy == 0) else True
         return 14 if in_corner else 10
 
     def get_route(self, route):
@@ -89,7 +85,8 @@ dest = map_(9, 0)
 # 選定起點
 start = map_(0, 9)
 # 放置障礙物
-obstacles = [(1,9), (1,8), (1,7), (6,0), (6,1), (6,2), (6,3), (4,4), (4,5), (4,6), (5,4), (5,5), (5,6), (6,4), (6,5), (6,6)]
+# obstacles = [(1,9), (1,8), (1,7), (6,0), (6,1), (6,2), (6,3), (4,4), (4,5), (4,6), (5,4), (5,5), (5,6), (6,4), (6,5), (6,6)]
+obstacles = np.random.randint(9, size=(50, 2)).tolist()
 for x, y in obstacles:
     map_(x, y).is_obstacle = True
 
